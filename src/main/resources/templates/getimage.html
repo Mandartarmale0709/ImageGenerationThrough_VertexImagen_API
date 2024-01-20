@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pose Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Roboto:wght@100&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script type="text/javascript" th:src="@{/js/getImage.js}"></script>
+</head>
+<body onLoad="loadImage();">
+<form class="text-center" id="imageform1" name="imageform1" th:action="@{/}" th:object="${prompt}" method="get"></form>
+    <h1 class="field text-center">
+        <span class="material-symbols-outlined">
+        self_improvement
+        </span>Imagen API
+    </h1>
+    
+    <div class="field btns text-center">
+        <button class="btn" th:onclick="goBack();">
+            Back
+            <span class="icon-left material-symbols-outlined">
+                undo
+            </span>
+        </button>
+        <button class="btn" th:onclick="callAPIOS();">
+            Save pose image to database
+            <span class="icon-left material-symbols-outlined">
+                save
+            </span>
+        </button>
+        <button class="btn" th:onclick="callAPIOS();">
+            Upload an image
+            <span class="icon-left material-symbols-outlined">
+                upload
+            </span>
+        </button>
+    </div>
+    <input id="hiddenstring" class="form-control" type="hidden" th:value="${imagestring}" >
+</form> 
+
+<form id="imageform" name="imageform">
+<div class="text-center">
+<img id="poseImage" name="poseImage" width="500" height="500">
+</div>
+</body>
+</html>
